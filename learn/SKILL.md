@@ -43,7 +43,7 @@ Output this as a brief, opinionated table:
 | Deletions | {what could have been removed} | Should have cut |
 | Simplify | {what was over-engineered} | Simplify next time |
 | Speed | {where it slowed} | Fix: {suggestion} |
-| Automate | {what to automate} | Skill / n8n / Memory |
+| Automate | {what to automate} | Skill / Sub-Agent / n8n / Memory |
 
 ### Step 1: Session Audit
 
@@ -86,6 +86,14 @@ For every insight from the session audit, classify it:
 - You did something manually that took 3+ steps and will happen again
 - You caught yourself giving Claude the same multi-step instruction twice
 - A workflow emerged during the session that has a clear trigger and output
+
+**Create a SUB-AGENT when:**
+- A task is parallelizable — multiple independent workstreams that can run simultaneously
+- A task is long-running and would flood the main context window with intermediate results
+- A task requires autonomous tool use across many steps without needing user input mid-way
+- The work is isolated enough that a fresh context (no session history) is an advantage, not a liability
+
+**Skill vs. Sub-Agent decision rule:** If the work has a consistent *trigger + prompt template* → Skill. If the work requires *autonomous execution + tool calls + parallelism* → Sub-Agent. Many workflows need both: a Skill that *launches* a Sub-Agent.
 
 **Update CLAUDE.md when:**
 - A new "always do X" or "never do Y" rule was discovered
@@ -169,7 +177,7 @@ Ask one hard question to evaluate whether the work was actually the right work. 
 - What assumption drove this session that you never actually validated?
 ```
 
-Pick Option A when the session used new AI capabilities, models, agents, or workflows. Pick Option B when the session was mostly content production, analysis, or strategy work.
+Pick Option A only when the session genuinely introduced a new AI concept, capability, or tool that the user hadn't encountered before and could go deeper on. If the session used familiar AI tools in routine ways — even if it was a "capability" session — default to Option B. When in doubt, pick Option B.
 
 ## Notes
 
