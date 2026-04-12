@@ -1,6 +1,6 @@
 # claude-skills
 
-5 shareable Claude Code skills for working smarter in any project.
+6 shareable Claude Code skills for working smarter in any project.
 
 ## Install
 
@@ -10,6 +10,7 @@ npx skills add kristenschumann/claude-skills --skill scope
 npx skills add kristenschumann/claude-skills --skill time-audit
 npx skills add kristenschumann/claude-skills --skill executive-critique
 npx skills add kristenschumann/claude-skills --skill kpi-bot
+npx skills add kristenschumann/claude-skills --skill slide-export
 ```
 
 ## Skills
@@ -28,6 +29,11 @@ Pressure-test a plan through two executive lenses: operational (execution, timel
 
 ### /kpi-bot
 Builds a daily Slack KPI bot. Describe the metric you want to track, and it writes the SQL, formats it for Slack, and creates or updates an n8n workflow to post it automatically.
+
+### /slide-export
+Export any HTML presentation (Reveal.js or generic) to PDF at the correct aspect ratio. Auto-detects slide dimensions from the source file, serves over a local HTTP server so assets load correctly, and outputs the PDF next to the source file.
+
+Requires: `decktape` (`brew install decktape` or `npm install -g decktape`)
 
 ## License
 
